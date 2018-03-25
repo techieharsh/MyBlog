@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180323091616) do
+ActiveRecord::Schema.define(version: 20180325152522) do
 
   create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text "message"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20180323091616) do
     t.bigint "visitor_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "status", default: false, null: false
     t.index ["visitor_id"], name: "index_messages_on_visitor_id"
   end
 

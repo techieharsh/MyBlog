@@ -7,3 +7,5 @@
   <p><%= link_to 'Delete', admin_visitor_path(visitor), method: :delete, data: {confirm: 'Are you sure?'} %></p>
   <hr/>
 <% end %>
+
+<p><%= paginate @visitors %></p>
