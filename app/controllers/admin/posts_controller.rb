@@ -24,9 +24,17 @@ class Admin::PostsController < Admin::ApplicationController
   end
 
   def edit
+    @post = Post.find(params[:id])
   end
 
   def update
+    @post = Post.find(params[:id])
+    if @post.update(post_params)
+      redirect_to admin_posts_path, notice: 'Post was successfully created.'
+    else
+      flash[:alert] = 'There was a problem updating post.'
+      render :edit
+    end
   end
 
   def show
@@ -34,6 +42,10 @@ class Admin::PostsController < Admin::ApplicationController
   end
 
   def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+
+    redirect_to admin_posts_path, notice: 'Post was successfully deleted.'
   end
 
   private
