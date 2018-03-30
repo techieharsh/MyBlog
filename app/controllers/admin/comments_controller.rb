@@ -3,7 +3,11 @@ class Admin::CommentsController < Admin::ApplicationController
     if params[:search].present?
       @comments = Comment.matching_fullname_or_message(params[:search]).page params[:page]
     else
-      @comments = Comment.where(status: params[:status]).page params[:page]
+      if params[:status] == "false"
+      @comments = Comment.where(status: 0).page params[:page]
+      else
+        @comments = Comment.where(status: 1).page params[:page]
+      end
     end
   end
 
