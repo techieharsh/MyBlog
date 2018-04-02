@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   namespace :admin do
     resources :posts
+    resources :notifications, only: [:index, :destroy]
     resources :messages, only: [:index, :show, :update, :destroy]
     resources :visitors, only: [:index, :destroy]
     resources :comments, only: [:index, :update, :destroy]
@@ -13,4 +14,6 @@ Rails.application.routes.draw do
     resources :sessions, only: [:new, :create, :destroy]
     resources :moderators, only: [:index, :edit, :update]
   end
+
+  match 'dismiss_all_notifications', to: 'admin/notifications#delete_all', via: :delete
 end
