@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180325152522) do
+ActiveRecord::Schema.define(version: 20180404074700) do
 
   create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text "message"
-    t.boolean "status"
+    t.boolean "status", default: false
     t.bigint "post_id"
     t.bigint "visitor_id"
     t.datetime "created_at", null: false
