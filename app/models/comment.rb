@@ -10,4 +10,10 @@ class Comment < ApplicationRecord
   def self.matching_fullname_or_message params
     joins(:visitor).where("fullname LIKE ? OR message LIKE ?", "%#{params}%", "%#{params}%")
   end
+
+  after_save :notify
+
+  def notify
+    notifications.build.save
+  end
 end
