@@ -1,5 +1,7 @@
 class Admin::PostsController < Admin::ApplicationController
   def index
+
+
     if params[:search].present?
       @posts = Post.matching_title_or_content(params[:search]).page params[:page]
     else

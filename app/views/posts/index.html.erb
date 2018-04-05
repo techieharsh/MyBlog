@@ -1,24 +1,60 @@
-<h1>Posts#index</h1>
+<!-- <h1>Posts#index</h1> -->
 
-<%= link_to 'All Posts', posts_path %>
+<%#= link_to 'All Posts', posts_path %>
 
-<% @posts.each do |post| %>
-  <p>
-    <%= truncate(post.title, length: 70, separator: ' ') %><br/>
-    <%= time_ago post.created_at %>
-  </p>
-  <p>
-    <%= truncate(post.content, length: 110, separator: ' ') { link_to 'Read More', post_path(post) } %>
-  </p>
+<!-- Search -->
+  <div class="search">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <h2>Browse Recipes</h2>
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="form-group">
+                <input type="email" class="form-control" placeholder="Search by Keyword">
+                <button type="submit" class="btn">Search Recipes</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <% if Setting.tag_visible? %>
-    <p>
-      <% post.tags.each do |tag| %>
-        <%= link_to tag.name, posts_path(tag: tag.name) %>
-      <% end %>
-    </p>
-  <% end %>
-  <hr/>
-<% end %>
 
-<%= paginate @posts %>
+  <!-- List Recipes -->
+  <div class="list">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <h5><i class="fa fa-cutlery" aria-hidden="true"></i>  List Recipes</h5>
+        </div>
+        <% @posts.each do |post| %>
+          <div class="col-lg-4 col-sm-6">
+            <div class="box grid recipes">
+
+
+                <h2><%= truncate(post.title, length: 70, separator: ' ') %></h2><br/>
+
+                <p>
+                  <%= truncate(post.content, length: 100, separator: ' ') { link_to 'Read More', post_path(post) } %>
+                </p>
+
+                <div class="tag">
+                  <% if Setting.tag_visible? %>
+                    <p>
+                      <% post.tags.each do |tag| %>
+                        <%= link_to tag.name, posts_path(tag: tag.name) %>
+                      <% end %>
+                    </p>
+                  <% end %>
+                </div>
+            </div>
+          </div>
+        <% end %>
+        <div class="col-lg-12 text-center">
+          <%= paginate @posts %>
+        </div>
+      </div>
+    </div>
+  </div>

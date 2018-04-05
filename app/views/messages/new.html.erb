@@ -1,29 +1,45 @@
-<h1>Messages#new</h1>
 
-<%= form_for @visitor_message, url: messages_path do |f| %>
-  <% if @visitor_message.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@visitor_message.errors.count, "error") %> prohibited this message from sending: </h2>
-      <ul>
-        <% @visitor_message.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+
+<!-- Page-->
+  <div class="page contact">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-12 title text-center">
+          <h1>Contact</h1>
+        </div>
+
+        <div class="col-lg-8 content">
+          <%= form_for @visitor_message, url: messages_path do |f| %>
+            <% if @visitor_message.errors.any? %>
+              <div id="error_explanation">
+                <h2><%= pluralize(@visitor_message.errors.count, "error") %> prohibited this message from sending: </h2>
+                <ul>
+                  <% @visitor_message.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+              <div class="form-group">
+                <label>Fullname</label>
+                <%= f.text_field :fullname, class: 'form-control' %>
+              </div>
+              <div class="form-group">
+                <label>Email</label>
+                <%= f.text_field :email, class: 'form-control' %>
+              </div>
+              <div class="form-group">
+                <%= f.fields_for :messages do |c| %>
+                  <p>
+                    <label>Message</label>
+                    <%= c.text_area :content, class: 'form-control' %>
+                  </p>
+                <% end %>
+              </div>
+              <%= f.submit 'Send Message', class: 'btn' %>
+          <% end %>
+        </div>
+
+      </div>
     </div>
-  <% end %>
-  <p>
-    <%= f.label :fullname %>
-    <%= f.text_field :fullname %>
-  </p>
-  <p>
-    <%= f.label :email %>
-    <%= f.text_field :email %>
-  </p>
-  <%= f.fields_for :messages do |c| %>
-    <p>
-      <%= c.label :content %>
-      <%= c.text_area :content %>
-    </p>
-  <% end %>
-  <p><%= f.submit 'Send Message' %></p>
-<% end %>
+  </div>
