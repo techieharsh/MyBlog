@@ -22,6 +22,11 @@
     <%= f.select :tag_ids, Tag.all.collect {|t| [t.name, t.id]}, {prompt: 'Select Tag'}, multiple: :true %>
   </p>
 
+  <div class="field">
+    add an image....
+    <%= f.file_field :image %>
+  </div>
+
   <p><%= f.submit %></p>
 
 <% end %>

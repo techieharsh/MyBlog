@@ -1,5 +1,6 @@
 <h1>Admin::Posts#show</h1>
 
+<%= image_tag(@post.image_url) %>
 <p><b>Title: </b> <%= @post.title %></p>
 <p><b>Content: </b> <%= @post.content %></p>
 <p><b>Publish: </b> <%= status_converter(@post.publish) %></p>

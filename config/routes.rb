@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   root to: 'posts#index'
 
+
   get '/login' => 'admin/sessions#new'
   get '/logout' => 'admin/sessions#destroy'
 
@@ -23,6 +24,8 @@ Rails.application.routes.draw do
   resources :posts, only: [:index, :show]
   resources :messages, only: [:new, :create]
   resources :comments, only: [:create]
+
+
 
   match 'dismiss_all_notifications', to: 'admin/notifications#delete_all', via: :delete
 end

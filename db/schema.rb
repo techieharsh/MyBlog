@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180404074700) do
+ActiveRecord::Schema.define(version: 20180406154345) do
 
   create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text "message"
@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(version: 20180404074700) do
     t.bigint "moderator_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image"
     t.index ["moderator_id"], name: "index_posts_on_moderator_id"
   end
 

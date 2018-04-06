@@ -55,3 +55,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 #Pagination
 gem 'kaminari'
+
+gem 'carrierwave', '~> 1.0'
+gem 'cloudinary'
+gem 'mini_magick'
