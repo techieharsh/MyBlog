@@ -13,16 +13,8 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @visitor_comment = visitor_comment
-
   end
 
-  # def search_result
-  #   if params[:search].present?
-  #     @posts = Post.matching_title_or_content(params[:search]).page params[:page]
-  #   else
-  #     @posts = Post.all.order(id: :desc).page params[:page]
-  #   end
-  # end
 
   def clear_sessions
     [:visitor_errors, :visitor_params].each { |k| session.delete(k) }

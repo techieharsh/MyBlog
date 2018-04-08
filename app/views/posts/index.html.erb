@@ -3,7 +3,7 @@
 <%#= link_to 'All Posts', posts_path %>
 
 <!-- Search -->
-  <div class="search" style="background-color: #fff">
+  <div class="search">
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
@@ -21,42 +21,6 @@
     </div>
   </div>
 
-  <div class="top">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-4">
-          <h5><i class="fa fa-cutlery" aria-hidden="true"></i> Top Breakfast Recipes</h5>
-          <div class="box clearfix">
-            <a href="recipe-detail.html">
-              <img src="images/square-recipes1.jpg" alt="">
-            </a>
-            <h3><a href="recipe-detail.html">Cinnamon Baked Doughnuts</a></h3>
-            <p>Lorem ipsum dolor sit amet, adipiscing elit...</p>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <h5><i class="fa fa-cutlery" aria-hidden="true"></i> Top Lunch Recipes</h5>
-          <div class="box clearfix">
-            <a href="recipe-detail.html">
-              <img src="images/square-recipes2.jpg" alt="">
-            </a>
-            <h3><a href="recipe-detail.html">Fruit Mix With Lemon Gravy</a></h3>
-            <p>Lorem ipsum dolor sit amet, adipiscing elit...</p>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <h5><i class="fa fa-cutlery" aria-hidden="true"></i> Top Dinner Recipes</h5>
-          <div class="box clearfix">
-            <a href="recipe-detail.html">
-              <img src="images/square-recipes3.jpg" alt="">
-            </a>
-            <h3><a href="recipe-detail.html">Red Cilly Sauce Cheese</a></h3>
-            <p>Lorem ipsum dolor sit amet, adipiscing elit...</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <!-- List Recipes -->
   <div class="list">
@@ -88,9 +52,15 @@
             </div>
           </div>
         <% end %>
-        <div class="col-lg-12 text-center">
-          <%= paginate @posts %>
+
+        <div class="col-lg-8">
+          <div class="pagination">
+            <%= paginate @posts, theme: 'twitter-bootstrap-4' %>
+          </div>
         </div>
+
+
+
       </div>
     </div>
   </div>

@@ -4,5 +4,4 @@ class Admin::DashboardController < Admin::ApplicationController
     @comments = Comment.last 5
     @visitors = Visitor.last 5
   end
-
 end
