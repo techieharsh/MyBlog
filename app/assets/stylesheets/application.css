@@ -14,6 +14,7 @@
  *= require font-awesome.min
  *= require styles.min
  *= require bootstrap.min
+ *= require comments
  *= require_tree .
  *= require_self
  */

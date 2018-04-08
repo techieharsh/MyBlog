@@ -12,4 +12,9 @@
 //
 //= require rails-ujs
 //= require turbolinks
+//= require cable
+//= require scripts
+//= requre popper.min
+//= requre select2.min 
+//= requre default
 //= require_tree .

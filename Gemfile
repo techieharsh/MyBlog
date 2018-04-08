@@ -56,6 +56,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 #Pagination
 gem 'kaminari'
 
+#ImageUpload
 gem 'carrierwave', '~> 1.0'
 gem 'cloudinary'
 gem 'mini_magick'
