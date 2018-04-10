@@ -1,66 +1,108 @@
-<h1>Dashboard</h1>
 
-<h2>Post</h2>
-<%= link_to 'Create New Post', new_admin_post_path %><br/>
-<%= link_to 'List Posts', admin_posts_path %>
+<!--Post List-->
+<div class="list">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <h5><i class="fa fa-cutlery" aria-hidden="true"></i>  Dashboard</h5>
+      </div>
+      <div class="col-lg-5 col-sm-6">
+        <div class="box grid recipes"><br/>
 
-<table class="table table-bordered table-hover">
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Replies</th>
-      <th>Date</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-        <td><%= truncate(post.title, length: 40, separator: '') %></td>
-        <td><%= post.comments.count %></td>
-        <td><%= time_ago post.created_at %></td>
-        <td>
-          <%= link_to 'Edit', edit_admin_post_path(post) %>
-          <%= link_to 'View', admin_post_path(post) %>
-          <%= link_to 'Delete', admin_post_path(post), method: :delete, data: {confirm: 'Are you sure?'} %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+          <h2>Post</h2>
+          <%= link_to 'Create New Post', new_admin_post_path, style: 'color: green; font-weight: bold;' %><br/>
+          <%= link_to 'List Posts', admin_posts_path, style: 'font-weight: bold;' %>
 
-<h2>Comments</h2>
-<%= link_to 'List All Comments', admin_comments_path %>
+          <table class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Replies</th>
+                <th>Date</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @posts.each do |post| %>
+                <tr>
+                  <td><%= truncate(post.title, length: 40, separator: '') %></td>
+                  <td><%= post.comments.count %></td>
+                  <td><%= time_ago post.created_at %></td>
+                  <td>
+                    <%= link_to 'Edit', edit_admin_post_path(post), style: 'color: #f0ad4e; font-weight: bold;' %>
+                    <%= link_to 'View', admin_post_path(post), style: 'color: #1ab394; font-weight: bold;' %>
+                    <%= link_to 'Delete', admin_post_path(post), method: :delete, data: {confirm: 'Are you sure?'},
+                                          style: 'color: #d9534f; font-weight: bold;' %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
 
-<% @comments.each do |comment| %>
-  <p><%= comment.visitor.fullname %></p>
-  <p><%= truncate(comment.message, length: 125, separator: '') %></p>
-  <p><%= time_ago comment.created_at %></p>
-  <hr/>
-<% end %>
+      <!--Visitor List -->
+      <div class="col-lg-7 col-sm-6">
+        <div class="box grid recipes"><br/>
 
-<h2>Visitors</h2>
-<table class="table table-bordered table-hover ">
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>Fullname</th>
-      <th>Email</th>
-      <th>Created</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @visitors.each_with_index do |visitor, index| %>
-      <tr>
-        <td><%= index + 1 %></td>
-        <td><%= visitor.fullname %></td>
-        <td><%= visitor.email %></td>
-        <td><%= time_ago visitor.created_at %></td>
-        <td>
-          <%= link_to 'Delete', admin_visitor_path(visitor), method: :delete, data: {confirm: 'Are you sure?'} %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+          <h2>Visitors</h2>
+          <%= link_to 'List Visitors', admin_visitors_path, style: 'font-weight: bold;' %>
+          <table class="table table-bordered table-hover" style=" margin-top: 23px;">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th style="text-align: center">Fullname</th>
+                <th style="text-align: center">Email</th>
+                <th style="text-align: center">Created</th>
+                <th style="text-align: center">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @visitors.each_with_index do |visitor, index| %>
+                <tr>
+                  <td><%= index + 1 %></td>
+                  <td><%= visitor.fullname %></td>
+                  <td><%= visitor.email %></td>
+                  <td><%= time_ago visitor.created_at %></td>
+                  <td>
+                    <%= link_to 'Delete', admin_visitor_path(visitor), method: :delete, data: {confirm: 'Are you sure?'},
+                        style: 'color: #d9534f; font-weight: bold;' %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!--Comment List-->
+      <div class="col-lg-12">
+        <div class="box grid recipes"><br/>
+
+          <h2>Comments</h2>
+          <%= link_to 'List All Comments', admin_comments_path, style: 'font-weight: bold;' %>
+          <table class="table table-bordered table-hover" style=" margin-top: 23px;">
+            <thead>
+              <tr>
+                <th style="text-align: center">Fullname</th>
+                <th style="text-align: center">Email</th>
+                <th style="text-align: center">Comment</th>
+                <th style="text-align: center">Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @comments.each do |comment| %>
+                <tr>
+                  <td><%= comment.visitor.fullname %></td>
+                  <td><%= comment.visitor.email %></td>
+                  <td><%= truncate(comment.message, length: 125, separator: '') %></td>
+                  <td><%= time_ago comment.created_at %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
