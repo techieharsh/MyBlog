@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get '/logout' => 'admin/sessions#destroy'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  mount Ckeditor::Engine => '/ckeditor'
   namespace :admin do
     resources :posts
     resources :settings, only: [:new, :create, :edit, :update]

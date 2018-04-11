@@ -15,6 +15,7 @@
 //= require cable
 //= require scripts
 //= requre popper.min
-//= requre select2.min 
+//= requre select2.min
 //= requre default
+//= require ckeditor/init
 //= require_tree .

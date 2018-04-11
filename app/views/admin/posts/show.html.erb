@@ -16,8 +16,8 @@
         <div class="col-lg-8">
           <%= image_tag(@post.image_url) %>
           <br/>
-          <p><%= @post.content  %></p>
-
+          <%= @post.content.html_safe  %>
+          
           <div class="tag">
             <% if Setting.tag_visible? %>
               <p>

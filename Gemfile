@@ -61,3 +61,5 @@ gem 'bootstrap4-kaminari-views'
 gem 'carrierwave', '~> 1.0'
 gem 'cloudinary'
 gem 'mini_magick'
+
+gem 'ckeditor'

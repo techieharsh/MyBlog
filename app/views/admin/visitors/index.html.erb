@@ -1,11 +1,39 @@
-<h1>Admin::Visitors#index</h1>
 
-<% @visitors.each do |visitor| %>
-  <p><%= visitor.fullname %></p>
-  <p><%= visitor.email %></p>
-  <p><%= time_ago visitor.created_at %></p>
-  <p><%= link_to 'Delete', admin_visitor_path(visitor), method: :delete, data: {confirm: 'Are you sure?'} %></p>
-  <hr/>
-<% end %>
-
-<p><%= paginate @visitors %></p>
+<div class="list">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <h5><i class="fa fa-cutlery" aria-hidden="true"></i> Visitors </h5>
+      </div>
+      <div class="col-lg-12 col-sm-6">
+        <div class="box grid recipes">
+          <table class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <th style="text-align: center">Name</th>
+                <th style="text-align: center">Email</th>
+                <th style="text-align: center">Created</th>
+                <th style="text-align: center">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @visitors.each do |visitor| %>
+                <tr>
+                  <td><%= visitor.fullname %></td>
+                  <td><%= visitor.email %></td>
+                  <td><%= time_ago visitor.created_at %></td>
+                  <td><%= link_to 'Delete', admin_visitor_path(visitor), method: :delete, data: {confirm: 'Are you sure?'} %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="col-lg-8">
+        <div class="pagination">
+          <%= paginate @visitors, theme: 'twitter-bootstrap-4' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

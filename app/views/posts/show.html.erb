@@ -40,10 +40,7 @@
               </div>
             </div>
           </div> -->
-
-
-          <p><%= @post.content  %></p>
-
+          <br/><br/>
           <div class="tag">
             <% if Setting.tag_visible? %>
               <p>
@@ -53,6 +50,8 @@
               </p>
             <% end %>
           </div>
+
+          <p><%= @post.content.html_safe  %></p>
 
           <div class="ingredient-direction">
             <div class="row">

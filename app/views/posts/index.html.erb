@@ -34,10 +34,10 @@
             <div class="box grid recipes">
 
                 <%= image_tag(post.image) %>
-                <h2><%= truncate(post.title, length: 60, separator: ' ') %></h2><br/>
+                <h2><%= truncate(post.title, length: 60, separator: ' ') %></h2>
 
                 <p>
-                  <%= truncate(post.content, length: 100, separator: ' ') { link_to 'Read More', post_path(post) } %>
+                  <%= truncate(post.content, length: 100, separator: ' ', :escape => false) { link_to 'Read More', post_path(post) } %>
                 </p>
 
                 <div class="tag">
