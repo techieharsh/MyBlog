@@ -1,21 +1,31 @@
-<h1>Edit Moderator</h1>
 
-<%= render 'validation_errors', object: @moderator %>
+  <div class="page contact">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-12 title text-center">
+          <h1>Edit Moderator</h1>
+        </div>
 
-<%= form_for [:admin, @moderator] do |f| %>
-  <p>
-    <%= f.label :fullname %>
-    <%= f.text_field :fullname %>
-  </p>
-  <p>
-    <%= f.label :username %>
-    <%= f.text_field :username %>
-  </p>
-  <p>
-    <%= f.label :password %>
-    <%= f.password_field :password %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
+        <div class="col-lg-8 content">
+          <%= form_for [:admin, @moderator] do |f| %>
+            <%= render 'validation_errors', object: @moderator %>
+              <div class="form-group">
+                <label>Fullname</label>
+                <%= f.text_field :fullname, class: 'form-control' %>
+              </div>
+              <div class="form-group">
+                <label>Username</label>
+                <%= f.text_field :username, class: 'form-control' %>
+              </div>
+              <div class="form-group">
+                <label>Password</label>
+                <%= f.password_field :password, class: 'form-control' %>
+              </div>
+
+              <%= f.submit 'Update', class: 'btn' %>
+          <% end %>
+        </div>
+
+      </div>
+    </div>
+  </div>

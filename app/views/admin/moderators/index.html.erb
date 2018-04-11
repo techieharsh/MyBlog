@@ -1,24 +1,33 @@
-<h1>Moderators</h1>
-
-<table class="table table-bordered table-hover">
-  <thead>
-    <tr>
-      <th>Fullname</th>
-      <th>Username</th>
-      <th>Created</th>
-      <th>Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @moderators.each do |moderator| %>
-    <tr>
-      <td><%= moderator.fullname %> | </td>
-      <td><%= moderator.username %> | </td>
-      <td><%= time_ago(@moderator.created_at) %> | </td>
-      <td>
-        <%= link_to 'Edit', edit_admin_moderator_path(moderator) %>
-      </td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="list">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <h5><i class="fa fa-cutlery" aria-hidden="true"></i> Moderators </h5>
+      </div>
+      <div class="col-lg-12 col-sm-6">
+        <div class="box grid recipes">
+          <table class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <th style="text-align: center">Fullname</th>
+                <th style="text-align: center">Username</th>
+                <th style="text-align: center">Created</th>
+                <th style="text-align: center">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @moderators.each do |moderator| %>
+                <tr>
+                  <td><%= moderator.fullname %></td>
+                  <td><%= moderator.username %></td>
+                  <td><%= time_ago(@moderator.created_at) %></td>
+                  <td><%= link_to 'Edit', edit_admin_moderator_path(moderator) %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
