@@ -1,28 +1,45 @@
-<h1>Admin::Comments#index</h1>
 
-<p>
-  <%= render 'search', route: admin_comments_path %>
-</p>
+<div class="list">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <h5><i class="fa fa-cutlery" aria-hidden="true"></i> Comments </h5>
+      </div>
+      <div class="col-lg-12 col-sm-6">
+        <div class="box grid recipes"><br/>
+           <%= render 'search', route: admin_comments_path %><br/>
+          <table class="table table-bordered table-hover">
+            <tbody>
 
-<p>
-  <%= link_to 'Approved', admin_comments_path(status: true) %>
-  <%= link_to 'Un-approved', admin_comments_path(status: false) %>
-</p>
+              <p>
+                <%= link_to 'Approved', admin_comments_path(status: true), class: 'btn btn-success' %>
+                <%= link_to 'Un-approved', admin_comments_path(status: false), class: 'btn btn-danger' %>
+              </p>
 
-<% @comments.each do |comment| %>
-  <p><b><%= comment.visitor.fullname %></b> posted message on <b><%= comment.post.title %></b></p>
-  <p><%= comment.message %></p>
-  <p>
-    <%= link_to 'Delete', admin_comments_path(comment), method: :delete, data: {confirm: 'Are you sure?'} %>
-    <%=
-      if params[:status] == 'true'
-        link_to 'Un-approve', admin_comment_path(comment, status: false), method: :put
-      else
-        link_to 'Approve', admin_comment_path(comment, status: true), method: :put
-      end
-    %>
-  </p>
-  <hr/>
-<% end %>
-
-<%= paginate @comments %>
+              <% @comments.each do |comment| %>
+                <p><b><%= comment.visitor.fullname %></b> posted message on <b><%= comment.post.title %></b></p>
+                <p><%= comment.message %></p>
+                <p>
+                  <%= link_to 'Delete', admin_comments_path(comment), method: :delete, data: {confirm: 'Are you sure?'} %>
+                  <%=
+                    if params[:status] == 'true'
+                      link_to 'Un-approve', admin_comment_path(comment, status: false), method: :put
+                    else
+                      link_to 'Approve', admin_comment_path(comment, status: true), method: :put
+                    end
+                  %>
+                </p>
+                <hr/>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="col-lg-8">
+        <div class="pagination">
+          <%= paginate @comments, theme: 'twitter-bootstrap-4' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
