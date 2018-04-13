@@ -1,23 +1,43 @@
-<h1>Notifications#index</h1>
+<div class="list">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <h5><i class="fa fa-cutlery" aria-hidden="true"></i> Notifications </h5>
+      </div>
+      <div class="col-lg-12 col-sm-6">
+        <div class="box grid recipes">
+          <table class="table table-bordered table-hover"><br/>
+            <tbody>
 
-<%=
-  if Notification.any?
-    link_to 'Dismiss All', dismiss_all_notifications_path, method: :delete
-  end
-%>
+              <p>
+                <%=
+                  if Notification.any?
+                    link_to 'Dismiss All', dismiss_all_notifications_path, method: :delete, class: 'btn btn-danger'
+                  end
+                %>
+              </p>
 
-<% @visitor_notifications.each do |notif| %>
-  <p>
-    <%= "#{notif.notifiable.fullname} added as a new visitor #{time_ago notif.created_at}" %>
-    <%= link_to 'Dismiss', admin_notification_path(notif), method: :delete, data: {confirm: 'Are you sure?'} %>
-  </p>
-<% end %>
+              <% @visitor_notifications.each do |notif| %>
+                <p>
+                  <%= "#{notif.notifiable.fullname} added as a new visitor #{time_ago notif.created_at}" %>
+                  <%= link_to 'Dismiss', admin_notification_path(notif), method: :delete, data: {confirm: 'Are you sure?'},
+                      style: 'font-weight: bold;' %>
+                </p>
+              <% end %>
 
-<hr/>
+              <hr/>
 
-<% @comment_notifications.each do |notif| %>
-  <p>
-    <%= "#{notif.notifiable.visitor.fullname} added a comment #{time_ago notif.created_at}" %>
-    <%= link_to 'Dismiss', admin_notification_path(notif), method: :delete, data: {confirm: 'Are you sure?'} %>
-  </p>
-<% end %>
+              <% @comment_notifications.each do |notif| %>
+                <p>
+                  <%= "#{notif.notifiable.visitor.fullname} added a comment #{time_ago notif.created_at}" %>
+                  <%= link_to 'Dismiss', admin_notification_path(notif), method: :delete, data: {confirm: 'Are you sure?'},
+                      style: 'font-weight: bold;' %>
+                </p>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
