@@ -1,24 +1,48 @@
-<h1>Admin::Messages#index</h1>
 
-<%= render 'search', route: admin_messages_path %>
+<div class="list">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <h5><i class="fa fa-cutlery" aria-hidden="true"></i> Messages </h5>
+      </div>
+      <div class="col-lg-12 col-sm-6">
+        <div class="box grid recipes"><br/>
 
-<% @messages.each do |message| %>
-
-  <p style=<%= message_weight(message) %>>
-    <%= message.visitor.fullname %><br/>
-    <%= truncate(message.content, length: 60, separator: '') %><br/>
-    <%= status_converter(message.status, truthy: 'Read', falsey: 'Un-Read') %><br/>
-    <%= time_ago(message.created_at) %><br/>
-  </p>
-  <p>
-    <%= link_to 'Delete', admin_message_path(message), method: :delete, data: {confirm: 'Are you sure?'} %>
-    <%= link_to 'Show', admin_message_path(message) %>
-  </p>
-
-  <p>
-    <%= build_read_status_link message %>
-  </p>
-  <hr/>
-<% end %>
-
-<%= paginate @messages %>
+          <%= render 'search', route: admin_messages_path %><br/>
+          <table class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <th style="text-align: center">Name</th>
+                <th style="text-align: center">Message</th>
+                <th style="text-align: center">Status</th>
+                <th style="text-align: center">Created</th>
+                <th style="text-align: center">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @messages.each do |message| %>
+                <tr>
+                  <td><%= message.visitor.fullname %></td>
+                  <td><%= truncate(message.content, length: 60, separator: '') %></td>
+                  <td><%= status_converter(message.status, truthy: 'Read', falsey: 'Un-Read') %></td>
+                  <td><%= time_ago(message.created_at) %></td>
+                  <td>
+                    <%= build_read_status_link message %>
+                    <%= link_to 'Show', admin_message_path(message), style: 'color: #1ab394; font-weight: bold;' %>
+                    <%= link_to 'Delete', admin_message_path(message), method: :delete, data: {confirm: 'Are you sure?'},
+                                          style: 'color: #d9534f; font-weight: bold;' %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="col-lg-8">
+        <div class="pagination">
+          <%= paginate @messages, theme: 'twitter-bootstrap-4' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
